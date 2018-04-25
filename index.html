@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:title" content='"Ähm"-Counter' />
+	<meta property="og:url" content="http://aehm.hnck.de" />
+	<meta property="og:description" content="The one and only counter">
+	<meta property="og:image" content="">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <title>Ähm-Counter</title>
+	<style>
+	html {
+	height: 100%;
+}
+body {
+	height: 100%;
+	margin: 0px;
+}
+#counter {
+	height: 85%;
+	background-color: white;
+	text-align: center;
+}
+#middle {
+	position: relative;
+	top: 40%;
+	transform: translateY(-40%);
+	-webkit-transform: translateY(-40%);
+	font-family: Montserrat;
+	font-weight: bold;
+}
+#number {
+	font-size: 30vh;
+}
+#speed {
+	font-size: 2vh;
+}
+#button {
+	height:15%;
+	text-align: center;
+}
+#button:active {
+	background-color: grey;
+}
+#buttonCaption {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	font-family: Montserrat;
+	font-size: 10vh;
+	font-weight: bold;
+}
+.unselctable {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;}
+	</style>
+  </head>
+  <body>
+	<div id="counter">
+		<div id="middle">
+			<div id="number" class="unselectable"></div>
+			<div id="speed" class="unselectable"></div>
+		</div>	
+	</div>
+	<div id="button">
+		<div id="buttonCaption" class="unselectable"></div>
+	</div>
+	<script>
+	var spaceKey = 32;
+	var ausgabe = 0;
+	var button_desc = ["ÄHM...","ÖHM...","ÄH...","ÖH...","HM...","HMMM...","ÄHEM...","EHM...","EHHM..."]
+	var colors = ["lightgreen","firered","lightblue","lightyellow"]
+	var startTimestamp = Date.now();
+	$("#number").text(ausgabe);
+	$("#buttonCaption").text(button_desc[Math.floor(Math.random()*button_desc.length)]);
+	$("#button").css("background-color", colors[Math.floor(Math.random() * colors.length)]);
+	$("#speed").text("0 ähm/min");
+	var somebodySaidAehm = function () {
+		ausgabe++;
+		$("#number").text(ausgabe);
+		$("#buttonCaption").text(button_desc[Math.floor(Math.random() * button_desc.length)]);
+		$("#button").css("background-color", colors[Math.floor(Math.random() * colors.length)]);
+		$("#speed").text(Math.floor(ausgabe / getMinutes(Date.now() - startTimestamp)) + " ähm/min");
+
+	}
+	$("#button").click(function() {
+		somebodySaidAehm();
+	});
+	$('html').keypress(function(e){
+      if (e.which == spaceKey) {
+		somebodySaidAehm();
+      }
+	});
+	var getMinutes  = function (timestamp) {
+		return timestamp/1000/60;
+	}
+</script>
+  </body>
+</html>
