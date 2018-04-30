@@ -14,12 +14,19 @@
 	html {
 	height: 100%;
 }
+* {
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
 body {
 	height: 100%;
 	margin: 0px;
 }
 #counter {
-	height: 85%;
+	height: 88%;
 	background-color: white;
 	text-align: center;
 }
@@ -38,8 +45,15 @@ body {
 	font-size: 2vh;
 }
 #button {
-	height:15%;
+	height:9%;
+	width: 80%;
+	max-width: 300px;
 	text-align: center;
+	margin: auto;
+	border-radius: 40px;
+}
+#button:hover {
+	filter: brightness(120%);
 }
 #button:active {
 	background-color: grey;
@@ -50,16 +64,9 @@ body {
 	transform: translateY(-50%);
 	-webkit-transform: translateY(-50%);
 	font-family: Montserrat;
-	font-size: 10vh;
+	font-size: 7vh;
 	font-weight: bold;
 }
-.unselctable {
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none;}
 	</style>
   </head>
   <body>
@@ -70,13 +77,13 @@ body {
 		</div>	
 	</div>
 	<div id="button">
-		<div id="buttonCaption" class="unselectable"></div>
+		<div id="buttonCaption"></div>
 	</div>
 	<script>
 	var spaceKey = 32;
 	var ausgabe = 0;
-	var button_desc = ["ÄHM...","ÖHM...","ÄH...","ÖH...","HM...","HMMM...","ÄHEM...","EHM...","EHHM..."]
-	var colors = ["lightgreen","firered","lightblue","lightyellow"]
+	var button_desc = ["ÄHM","ÖHM","ÄH","ÖH","HM","HMMM","ÄHEM","EHM","EHHM"]
+	var colors = ["lightgreen"]
 	var startTimestamp = Date.now();
 	$("#number").text(ausgabe);
 	$("#buttonCaption").text(button_desc[Math.floor(Math.random()*button_desc.length)]);
