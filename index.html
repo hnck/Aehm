@@ -9,7 +9,7 @@
 	<meta property="og:image" content="">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    <title>Ähm-Counter</title>
+    <title>Ähm</title>
 	<style>
 	html {
 	height: 100%;
@@ -95,6 +95,7 @@ body {
 		ausgabe++;
 		$("#number").text(ausgabe);
 		$("#buttonCaption").text(button_desc[Math.floor(Math.random() * button_desc.length)]);
+		$("title").text(button_desc[Math.floor(Math.random() * button_desc.length)]);
 		$("#button").css("background-color", colors[Math.floor(Math.random() * colors.length)]);
 		$("#speed").text(Math.floor(ausgabe / getMinutes(Date.now() - startTimestamp)) + " ähm/min");
 
